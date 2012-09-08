@@ -44,14 +44,17 @@ func Get(reddit string) ([]Item, error) {
 		return nil, err
 	}
 	defer resp.Body.Close()
+
 	if resp.StatusCode != http.StatusOK {
 		return nil, errors.New(resp.Status)
 	}
+
 	r := new(response)
 	err = json.NewDecoder(resp.Body).Decode(r)
 	if err != nil {
 		return nil, err
 	}
+
 	items := make([]Item, len(r.Data.Children))
 	for i, child := range r.Data.Children {
 		items[i] = child.Data
