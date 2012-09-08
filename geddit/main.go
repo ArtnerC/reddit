@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/ArtnerC/reddit"
 	"log"
-	"reddit"
 )
 
 func main() {
